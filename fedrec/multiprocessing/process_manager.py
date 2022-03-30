@@ -4,6 +4,7 @@ from collections import defaultdict
 from typing import Any, DefaultDict, Dict
 
 import ray
+import logging
 from fedrec.utilities import registry
 
 
