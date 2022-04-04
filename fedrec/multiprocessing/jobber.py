@@ -1,6 +1,5 @@
 import atexit
 import os
-import time
 from typing import Dict
 from fedrec.data_models.job_response_model import JobResponseMessage
 from fedrec.data_models.job_submit_model import JobSubmitMessage
@@ -48,8 +47,8 @@ class Jobber:
         executes the job request and publishes the results
         in that order.
         """
-        try:
-            while True:
+        while True:
+            try:
                 print("Waiting for job request")
                 job_request = self.comm_manager.receive_message()
                 print(
@@ -59,9 +58,9 @@ class Jobber:
 
                 result = self.execute(job_request)
                 self.publish(result)
-        except Exception as e:
-            print(f"Exception {e}")
-            self.stop(False)
+            except Exception as e:
+                print(f"Exception {e}")
+                self.stop(False)
 
     def execute(self, message: JobSubmitMessage) -> JobResponseMessage:
         result_message = JobResponseMessage(
@@ -85,6 +84,7 @@ class Jobber:
         Publishes the result after executing the job request
         """
         self.comm_manager.send_message(job_result)
+        pass
 
     def stop(self, success=True) -> None:
         self.comm_manager.finish()

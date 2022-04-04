@@ -2,6 +2,10 @@ from fedrec.communication_interfaces.abstract_comm_manager import \
     AbstractCommunicationManager
 from fedrec.utilities import registry
 from kafka import KafkaConsumer, KafkaProducer
+from time import sleep
+from json import dumps, loads
+from kafka import KafkaConsumer
+from kafka import KafkaProducer
 
 
 @registry.load("communication_interface", "kafka")
@@ -83,7 +87,7 @@ class Kafka(AbstractCommunicationManager):
         --------
         message: object
             The message received.
-        """
+        # """
         if not self.consumer:
             raise Exception("No consumer defined")
         return next(self.consumer).value
@@ -101,7 +105,7 @@ class Kafka(AbstractCommunicationManager):
             raise Exception("No producer defined")
         self.producer.send(self.producer_topic, value=message).get()
         self.producer.flush()
-        
+
     def finish(self):
         """
         Closes the consumer and producer.

@@ -1,7 +1,4 @@
-from collections import defaultdict
 from typing import Dict, List, Tuple
-from fedrec.utilities import registry
-from defusedxml import NotSupportedError
 from fedrec.utilities.registry import Registrable
 from fedrec.serialization.serializable_interface import (Serializable,
                                                          is_primitives)

@@ -1,7 +1,7 @@
 import sys
 from argparse import ArgumentParser
 from typing import Callable, Dict
-
+import logging
 import yaml
 
 from fedrec.multiprocessing.jobber import Jobber
