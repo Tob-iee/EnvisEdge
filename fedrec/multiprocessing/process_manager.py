@@ -1,10 +1,10 @@
-from abc import ABC
 import atexit
+import logging
+from abc import ABC
 from collections import defaultdict
 from typing import Any, DefaultDict, Dict
 
 import ray
-import logging
 from fedrec.utilities import registry
 
 

@@ -70,7 +70,7 @@ Install the dependencies with conda or pip
 conda env create --name recoedge --file environment.yml
 conda activate recoedge
 ``` 
-Download kafka from [Here](https://github.com/apache/kafka) 👈
+Download kafka from [Here](https://www.apache.org/dyn/closer.cgi?path=/kafka/3.1.0/kafka_2.13-3.1.0.tgz) 👈
 and start the kafka server using the following commands
 
 ```bash

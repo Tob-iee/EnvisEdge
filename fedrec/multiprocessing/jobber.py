@@ -1,9 +1,9 @@
 import atexit
 import os
 from typing import Dict
+
 from fedrec.data_models.job_response_model import JobResponseMessage
 from fedrec.data_models.job_submit_model import JobSubmitMessage
-
 from fedrec.python_executors.base_actor import BaseActor
 from fedrec.utilities import registry
 

@@ -1,5 +1,5 @@
-from abc import ABC, abstractmethod
 import logging
+from abc import ABC, abstractmethod
 from time import time
 
 
@@ -82,8 +82,3 @@ class NoOpLogger(BaseLogger):
 
     def add_graph(*args, **kwargs):
         pass
-
-
-
-
-    

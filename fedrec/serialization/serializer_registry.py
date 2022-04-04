@@ -1,7 +1,8 @@
 from typing import Dict, List, Tuple
-from fedrec.utilities.registry import Registrable
+
 from fedrec.serialization.serializable_interface import (Serializable,
                                                          is_primitives)
+from fedrec.utilities.registry import Registrable
 
 
 def get_deserializer(serialized_obj_name):
@@ -11,7 +12,7 @@ def get_deserializer(serialized_obj_name):
 
 
 def serialize_attribute(obj):
-    # TODO : make a single global function 
+    # TODO : make a single global function
     # for this method.
     ## location : [envis_base_module.py]
     # Then recusively call serialize_attribute on each
@@ -26,20 +27,20 @@ def serialize_attribute(obj):
     elif is_primitives(obj):
         return obj
     else:
-        assert hasattr(obj,"serialize"), "Object must be serializable"
+        assert hasattr(obj, "serialize"), "Object must be serializable"
         return obj.serialize()
 
 
 def deserialize_attribute(obj: Dict):
-    # TODO : make a single global function 
+    # TODO : make a single global function
     # for this method.
     ## location : [envis_base_module.py]
-    # Initially take in dict from abstract comm manager 
+    # Initially take in dict from abstract comm manager
     # from kafka consumer.
     # check for primitives
     if is_primitives(obj):
         return obj
-    # check for __type__ in dictonary 
+    # check for __type__ in dictonary
     elif "__type__" in obj:
         type_name = obj["__type__"]
         data = obj["__data__"]

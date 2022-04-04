@@ -3,15 +3,16 @@ from abc import abstractproperty
 from argparse import ArgumentParser
 from copy import deepcopy
 from typing import Dict
-import torch
+
 import datasets
 import experiments
 import fedrec
-from fedrec.data_models.state_tensors_model import StateTensors
 import fl_strategies
+import torch
 import yaml
 from fedrec.data_models.job_response_model import JobResponseMessage
 from fedrec.data_models.job_submit_model import JobSubmitMessage
+from fedrec.data_models.state_tensors_model import StateTensors
 from fedrec.python_executors.aggregator import Aggregator, Neighbour
 from fedrec.python_executors.base_actor import BaseActor
 from fedrec.python_executors.trainer import Trainer
@@ -71,14 +72,15 @@ class TestTrainer(AbstractTester):
     def __init__(self,
                  config: Dict) -> None:
         super().__init__(config, "trainer")
-        self.worker =  Trainer(worker_index=0,
-                       config=self.config,
-                       logger=NoOpLogger(),
-                       client_id=2
-                       )
+        self.worker = Trainer(worker_index=0,
+                              config=self.config,
+                              logger=NoOpLogger(),
+                              client_id=2
+                              )
 
     def test_training_method(self):
         # create JobSubmitMessage with Job_type="train"
+        # response = self.submit_message(1,1,"train",[],{})
         response: JobResponseMessage = self.submit_message(
             senderid=self.worker.worker_index,
             receiverid=self.worker.worker_index,
@@ -167,8 +169,8 @@ if __name__ == "__main__":
     print("testing train model...")
     test_trainer.test_testing_method()
     # start aggregator
-    print("aggregating...")
-
+    # TODO : HARD coded stuff need to be removed
+    # ------------------------------------------------------------
     tensor = StateTensors(
         storage='/home/ramesht/dump_tensor/',
         worker_id=0, round_idx=0,
@@ -182,7 +184,8 @@ if __name__ == "__main__":
         in_neighbours={
             0: Neighbour(0, tensor, 5)}
     )
-    print("testing aggregation...")
+    # ------------------------------------------------------------
+    print("Test aggregation...")
     test_aggregator.test_aggregation()
     print("testing sampling...")
     test_aggregator.test_sample_client()

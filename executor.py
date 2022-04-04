@@ -1,7 +1,8 @@
+import logging
 import sys
 from argparse import ArgumentParser
 from typing import Callable, Dict
-import logging
+
 import yaml
 
 from fedrec.multiprocessing.jobber import Jobber
@@ -25,10 +26,10 @@ class JobExecutor():
         if not set(['experiments',
                     'fedrec',
                     'fl_strategies']).issubset(set(sys.modules.values())):
+            import datasets
             import experiments
             import fedrec
             import fl_strategies
-            import datasets
         self.worker = actorCls(
             0, config, logger, **kwargs)
         self.jobber = Jobber(
@@ -79,7 +80,7 @@ def main():
     process_manager.start(Trainer.__name__, "run")
 
     import time
-    time.sleep(234234) 
+    time.sleep(234234)
 
 
 if __name__ == "__main__":

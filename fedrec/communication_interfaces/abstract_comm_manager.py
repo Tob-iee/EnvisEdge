@@ -1,9 +1,11 @@
-from abc import ABC, abstractmethod
-from fedrec.serialization.serializable_interface import Serializable
-from fedrec.serialization.serializer_registry import deserialize_attribute, serialize_attribute
-from fedrec.utilities import registry
-import asyncio
 import ast
+import asyncio
+from abc import ABC, abstractmethod
+
+from fedrec.serialization.serializable_interface import Serializable
+from fedrec.serialization.serializer_registry import (deserialize_attribute,
+                                                      serialize_attribute)
+from fedrec.utilities import registry
 
 
 class AbstractCommunicationManager(ABC):
