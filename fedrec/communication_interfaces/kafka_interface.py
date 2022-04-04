@@ -1,11 +1,10 @@
+from json import dumps, loads
+from time import sleep
+
 from fedrec.communication_interfaces.abstract_comm_manager import \
     AbstractCommunicationManager
 from fedrec.utilities import registry
 from kafka import KafkaConsumer, KafkaProducer
-from time import sleep
-from json import dumps, loads
-from kafka import KafkaConsumer
-from kafka import KafkaProducer
 
 
 @registry.load("communication_interface", "kafka")
