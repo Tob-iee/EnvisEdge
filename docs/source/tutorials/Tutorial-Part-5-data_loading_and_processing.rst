@@ -47,7 +47,8 @@ It’s used to load that dataset in samples and chunks.
 
     * dataLoader: this input is used to define the loading and sampling process of a particular dataset
     * next(): this uses uses a specified index range to fetch and load data in chunks
-    * hasNext(): this checks if the current index exists in the index range of the dataset.
+    * hasNext(): this checks if the current index exists in the range of the dataset and returns true if there the current index is less than the length of the dataset otherwise false.
+
 
 
 .. code:: kotlin
